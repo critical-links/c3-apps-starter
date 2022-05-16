@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+
+  template-app-name:
+    image: template/template-app-name
+    hostname: template-app-name
+    domainname: c3
+    container_name: c3app_template-app-name
+    restart: unless-stopped
+    ports:
+      - "${PORT_HTTP:-80}:80"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - c3app-template-app-name-network
+
+networks:
+  c3app-template-app-name-network:
+    external: true

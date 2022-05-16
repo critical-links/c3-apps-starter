@@ -1,0 +1,6 @@
+# custom : c3app-template-app-name
+check host c3app-template-app-name with address template-app-name.c3edu.online
+        if failed ping then alert
+        if failed port 443 protocol https
+        #and request /some/path with content = "a string"
+        then alert
