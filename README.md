@@ -23,5 +23,9 @@ enter a working path ex ~/home/
 
 ```shell
 $ cd ~/home/
-$ git clone https://github.com/critical-links/critical-links-c3-apps.git
+$ https://github.com/critical-links/c3-apps-starter.git
 ```
+
+#### Follow Tutorial
+
+please follow tutorial at [TUTORIAL.md](TUTORIAL.md)
