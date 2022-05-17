@@ -19,7 +19,7 @@ do
 	fi	
 done
 
-printf "  unpack package files to filesystem...\\n"
+printf "  unpack package files to file system...\\n"
 # extract dir files/ package root directories ex etc, srv etc
 for dir in "${C3_PACKAGE_EXTRACT_DIRS[@]}"
 do

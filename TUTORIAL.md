@@ -36,10 +36,10 @@ $ cd ~/c3-apps-starter
 
 ### Bootstrap boilerplate files
 
-first we need to run `./bootstrapNewApp.sh` script to boostrap boilerplate files to work with
+first we need to run `./bootstrapNewApp.sh` script to bootstrap boilerplate files to work with
 
 ```shell
-# boostrap c3app
+# bootstrap c3app
 $ ./bootstrapNewApp.sh wordpress-tutorial 8280
 ```
 
@@ -47,7 +47,7 @@ $ ./bootstrapNewApp.sh wordpress-tutorial 8280
 
 ### Inspect boilerplate files
 
-after use `./bootstrapNewApp.sh` script we can check that we have bellow filesystem structure created
+after use `./bootstrapNewApp.sh` script we can check that we have bellow file system structure created
 
 ```shell
 wordpress-tutorial/                                          c3app root folder
@@ -126,7 +126,7 @@ networks:
     external: true
 ```
 
-we opted to exposed http port in environment variables **in an external file** `.env`, this file was created on boostrap c3app generation, if one want to change exposed port this is the rigth place to do that, just change `8280` for desired port ex `8080`
+we opted to exposed http port in environment variables **in an external file** `.env`, this file was created on bootstrap c3app generation, if one want to change exposed port this is the right place to do that, just change `8280` for desired port ex `8080`
 
 `wordpress/srv/docker/thirdparty/wordpress-tutorial/.env`
 
@@ -217,11 +217,11 @@ in c3-apps-starter repo root path launch `./bundleApp.sh` script, to bundle c3Ap
 ```shell
 # bundle c3app
 $ ./bundleApp.sh wordpress-tutorial
-# outcomme
+# outcome
 done with wordpress-tutorial bundle.
 # check bundle c3app
 $ ls -la @deploy-versions/wordpress-tutorial/
-# outcomme
+# outcome
 -rw-r--r-- 1 mario users 5666 May 16 17:08 wordpress-tutorial_1.0.0.c3app
 ```
 
@@ -280,7 +280,7 @@ done, now to install and uninstall c3app, launch bellow scripts in path /tmp/c3a
 ### Configure Hosts File
 
 before start execute the suggested commands, we need to `hack` our hosts file to simulate c3app dns domain `wordpress-tutorial.c3edu.online`
-what this means is that c3app work with reverse proxy and samba dns cnames, if we are connected to a c3 network we can access the c3app just using that domain in browser for ex `https://wordpress-tutorial.c3edu.online` and it simply works, but in our current development environment we are connected to a non c3 network, and to test reverse proxy we must edit our `/etc/hosts` file in our workstation/laptop (machine where we use the brower)
+what this means is that c3app work with reverse proxy and samba dns cnames, if we are connected to a c3 network we can access the c3app just using that domain in browser for ex `https://wordpress-tutorial.c3edu.online` and it simply works, but in our current development environment we are connected to a non c3 network, and to test reverse proxy we must edit our `/etc/hosts` file in our workstation/laptop (machine where we use the browser)
 
 in our case our c3 have the ip `192.168.1.120` we can get it's ip with
 
@@ -361,7 +361,7 @@ $ sudo ./syncthingInstall.sh wordpress-tutorial 008280
   extracting data.json from /data/syncthing/data/008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/008280
 install wordpress-tutorial...
 check if target directories exist...
-  unpack package files to filesystem...
+  unpack package files to file system...
 docker network c3app-wordpress-tutorial-network
   skip creating network c3app-wordpress-tutorial-network
 enable wordpress-tutorial...
