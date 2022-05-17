@@ -1,0 +1,10 @@
+{
+  "appName": "wordpress-tutorial",
+  "domain": "wordpress-tutorial.c3edu.online",
+  "version": "1.0.0",
+  "instructions": "",  
+  "state": "INSTALLING",
+  "bundleFilename": "wordpress-tutorial_1.0.0.c3app",
+  "extractFiles": ["VERSION","enable.sh","disable.sh","install.sh","uninstall.sh","app.env","common.env","data.json"],
+  "exposedPorts": [{ "http": "8280" }]
+}

@@ -3,7 +3,7 @@
 # check arguments
 if [ -z $1 ]
 then
-	echo "This script require a valid package name ex '${0} wordpress'"
+	echo "This script require a valid c3app name ex '${0} wordpress'"
 	exit 1
 fi
 # check if package dir exists

@@ -4,7 +4,7 @@
 # use example: 'sudo ./syncthingInstall.sh moodle 3456afe'
 
 export C3_PACKAGE_BASE_DATA_PATH="/var/lib/c3apps"
-export C3_PACKAGE_BASE_BUNDLE_PATH="/home/syncthing/data"
+export C3_PACKAGE_BASE_BUNDLE_PATH="/data/syncthing/data"
 export PACKAGE_BASE_FILENAME_EXTENSION="c3app"
 # this must match common.env
 export C3_PACKAGE_EXTRACT_FILES=( "VERSION" "enable.sh" "disable.sh" "install.sh" "uninstall.sh" "app.env" "common.env" "data.json")
@@ -12,7 +12,7 @@ export C3_PACKAGE_EXTRACT_FILES=( "VERSION" "enable.sh" "disable.sh" "install.sh
 # check arguments
 if [ -z $1 ]
 then
-	echo "This script require a valid package name ex '${0} wordpress'"
+	echo "This script require a valid c3app name ex '${0} wordpress'"
 	exit 1
 fi
 if [ -z $2 ]

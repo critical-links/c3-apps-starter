@@ -4,7 +4,7 @@
 # use example: 'sudo ./syncthingUninstall.sh 3456afe'
 
 export C3_PACKAGE_BASE_DATA_PATH="/var/lib/c3apps"
-export C3_PACKAGE_BASE_BUNDLE_PATH="/home/syncthing/data"
+export C3_PACKAGE_BASE_BUNDLE_PATH="/data/syncthing/data"
 
 # check arguments
 if [ -z $1 ]
