@@ -5,7 +5,7 @@
   - [Part I - Create WordPress C3App](#part-i---create-wordpress-c3app)
     - [Bootstrap boilerplate files](#bootstrap-boilerplate-files)
     - [Inspect boilerplate files](#inspect-boilerplate-files)
-    - [Adapt Docker Compose file to work with Wordpress](#adapt-docker-compose-file-to-work-with-wordpress)
+    - [Change generated Docker Compose file to work with our C3App Wordpress/Mysql](#change-generated-docker-compose-file-to-work-with-our-c3app-wordpressmysql)
     - [Create External Network](#create-external-network)
     - [Test local wordpress c3App](#test-local-wordpress-c3app)
     - [Check running Services](#check-running-services)
@@ -71,7 +71,7 @@ wordpress-tutorial/                                          c3app root folder
 └── VERSION                                                  c3app version used in bundle script
 ```
 
-### Adapt Docker Compose file to work with Wordpress
+### Change generated Docker Compose file to work with our C3App Wordpress/Mysql
 
 - [Docker Hub](https://hub.docker.com/_/wordpress)
 
@@ -202,7 +202,7 @@ after we finish install, we have a proper wordpress installation, connected to a
 
 ### Clean up
 
-if we leave stack running, before next steps, **Bundle and Deploy App**, we need to do some clean up
+before next steps, **Bundle and Deploy App**, we need to do some clean up, to prevent errors
 
 ```shell
 # enter path if not already in
