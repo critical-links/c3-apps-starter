@@ -1,6 +1,0 @@
-# custom : c3app-wordpress-tutorial
-check host c3app-wordpress-tutorial with address wordpress-tutorial.c3edu.online
-        if failed ping then alert
-        if failed port 443 protocol https
-        #and request /some/path with content = "a string"
-        then alert

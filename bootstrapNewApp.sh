@@ -65,4 +65,4 @@ do
 done
 
 printf "done\n\n";
-printf "after bootstrap new app directory structure with ${0} we must proceed to change/tweak all the other files that can't be automatically changed/generated\n\n- ${APP_NAME}/etc/apache2/sites-available/c3app-${APP_NAME}.com-le-ssl.conf\n- ${APP_NAME}/srv/docker/thirdparty/${APP_NAME}/docker-compose.yml\n\n"
+printf "after bootstrap new app directory structure with ${0} we must change some files that can't be automatically changed/generated\n\n- ${APP_NAME}/etc/apache2/sites-available/c3app-${APP_NAME}.com-le-ssl.conf\n- ${APP_NAME}/srv/docker/thirdparty/${APP_NAME}/docker-compose.yml\n\n"

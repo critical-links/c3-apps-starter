@@ -25,16 +25,18 @@
 
 ## Enter Repo Path
 
-after clone repo <https://github.com/critical-links/c3-apps-starter.git>, continue in cloned folder
+after cloned repo <https://github.com/critical-links/c3-apps-starter.git> in [README](README.md), we must enter cloned folder path and start form here
 
 ```shell
 # enter path
-$ cd ~/home/c3-apps-starter
+$ cd ~/c3-apps-starter
 ```
 
 ## Part I - Create WordPress C3App
 
 ### Bootstrap boilerplate files
+
+first we need to run `./bootstrapNewApp.sh` script to boostrap boilerplate files to work with
 
 ```shell
 # boostrap c3app
