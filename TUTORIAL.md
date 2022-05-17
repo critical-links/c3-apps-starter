@@ -103,6 +103,7 @@ services:
       WORDPRESS_DB_NAME: wordpress
     volumes:
       - /etc/localtime:/etc/localtime:ro
+      - ./volumes/wordpress/var/www/html:/var/www/html
     ports:
       - "${PORT_HTTP:-8084}:80"
     depends_on:
