@@ -77,6 +77,10 @@ wordpress-tutorial/                                          c3app root folder
 
 open `wordpress-tutorial/srv/docker/thirdparty/wordpress-tutorial/docker-compose.yml`
 
+```shell
+$ nano wordpress-tutorial/srv/docker/thirdparty/wordpress-tutorial/docker-compose.yml
+```
+
 and replace it's contents with
 
 `wordpress-tutorial/srv/docker/thirdparty/wordpress-tutorial/docker-compose.yml`
@@ -233,12 +237,13 @@ done we have a bundle with our c3 c3app `wordpress-tutorial_1.0.0.c3app`
 
 ### Deploy App on a C3 device
 
-to deploy/simulate a c3cloudcontrol/syncthing installation one can use `pushToC3.sh` script
+to deploy/simulate a c3cloudcontrol/syncthing installation one can use `pushToC3.sh` script to push c3app on a c3 device
 
-first we need to know the ip address of our c3, or use it's domain for ex `c3edu.online`, in our case we use domain name `c3edu.online`
-if our c3 **only responds to a specific ip** we must tweak `pushToC3.sh` script to change its default `C3_ADDRESS`
+first we need to know the ip address of our c3, or use it's domain for ex `c3edu.online`,
+in our case we use domain name `c3edu.online`
+if our c3 **only responds to a specific ip** we must tweak `pushToC3.sh` script to change its default `C3_ADDRESS` ex `C3_ADDRESS="c3@192.168.1.120"` in the case our c3 ip address is `192.168.1.120`
 
-we can test communication with a simple
+we can test communication with a simple ssh connection
 
 ```shell
 # test ssh connection
@@ -256,11 +261,11 @@ C3_PASS="root"
 SYNCTHING_APP_DIR="008280"
 ```
 
-> Note: `SYNCTHING_APP_DIR` is just a fake syncthing folderId
+> Note: `SYNCTHING_APP_DIR` is just a fake syncthing folderId, in this case we use port number prefixed with `00`
 
-after we have connection we can deploy c3app on our c3
+after we check ssh connection, we can deploy c3app on our c3
 
-> Tip: we must use our c3app name id and version, we can get it from bundle filename ex `wordpress-tutorial_1.0.0.c3app`
+> Tip: we must use our c3app name id and version in script arguments, we can get it from bundle filename ex `wordpress-tutorial_1.0.0.c3app`
 
 ```shell
 # bundle and deploy c3app on c3
@@ -321,7 +326,7 @@ $ ping wordpress-tutorial.c3edu.online
 64 bytes from c3edu.online (192.168.1.120): icmp_seq=2 ttl=64 time=0.259 ms
 ```
 
-if domain response successfully we can start to install and test c3app
+if domain responds successfully we can start to install and test c3app
 
 ### Install and Run c3App
 
@@ -458,7 +463,7 @@ we see that we are redirect to https and have our c3app working
 
 ### In C3 Device
 
-to revert c3app installation, we use the `./syncthingInstall.sh` script, this will remove all files, docker images, volumes and networks
+to revert c3app installation, we use the `./syncthingUninstall.sh` script, this will remove all files, docker images, volumes and networks
 
 first we must connect to c3 device, if not already connected
 
