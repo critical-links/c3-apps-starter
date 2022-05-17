@@ -214,7 +214,9 @@ $ docker-compose down --remove-orphans | true  && sudo rm volumes/ -R | true
 
 ### Bundle App
 
-in c3-apps-starter repo root path launch `./bundleApp.sh` script, to bundle c3App in a standalone c3app passing the c3app id ex `wordpress-tutorial`
+before push our bundle c3app to c3 device we must bundle it in a standalone file `.c3app`
+
+in `c3-apps-starter` repo root path launch `./bundleApp.sh` script, to bundle c3App in a standalone c3app passing the c3app id ex `wordpress-tutorial`
 
 ```shell
 # bundle c3app
