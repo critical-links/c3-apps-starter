@@ -43,7 +43,9 @@ first we need to run `./bootstrapNewApp.sh` script to bootstrap boilerplate file
 $ ./bootstrapNewApp.sh wordpress-tutorial 8280
 ```
 
-> NOTE: `wordpress-tutorial/` was previously added to `.gitignore`, with that git will not track `wordpress-tutorial` changes
+> Note: `wordpress-tutorial/` was previously added to `.gitignore`, with that git will not track `wordpress-tutorial` changes
+
+> Note: argument `8280` will be our http exposed port
 
 ### Inspect boilerplate files
 
