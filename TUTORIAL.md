@@ -12,7 +12,7 @@
     - [Check Logs](#check-logs)
     - [Test local c3App](#test-local-c3app)
     - [Clean up](#clean-up)
-  - [Part II - Bundle and Deploy App on C3CloudControl](#part-ii---bundle-and-deploy-app-on-c3cloudcontrol)
+  - [Part II - Bundle and Deploy App on C3 Device](#part-ii---bundle-and-deploy-app-on-c3-device)
     - [Bundle App](#bundle-app)
     - [Deploy App on a C3 device](#deploy-app-on-a-c3-device)
     - [Configure Hosts File](#configure-hosts-file)
@@ -210,7 +210,7 @@ $ cd wordpress-tutorial/srv/docker/thirdparty/wordpress-tutorial
 $ docker-compose down --remove-orphans | true  && sudo rm volumes/ -R | true
 ```
 
-## Part II - Bundle and Deploy App on C3CloudControl
+## Part II - Bundle and Deploy App on C3 Device
 
 ### Bundle App
 
