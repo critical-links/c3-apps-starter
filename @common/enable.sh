@@ -25,8 +25,12 @@ sleep ${SLEEP_TIME}
 
 printf "  activate apache reverse proxy ${APP_DOMAIN}.${C3_DOMAIN}...\\n"
 cd ${C3_APACHE_SITES_ENABLED}
-${APACHE_ENABLE_HTTP}
-${APACHE_ENABLE_HTTPS}
+if [ ! -L "c3app-${APP_NAME}.conf" ]; then
+  ${APACHE_ENABLE_HTTP}
+fi
+if [ ! -L "c3app-${APP_NAME}.com-le-ssl.conf" ]; then
+  ${APACHE_ENABLE_HTTPS}
+fi
 ${APACHE_RELOAD_SERVICE}
 sleep ${SLEEP_TIME}
 

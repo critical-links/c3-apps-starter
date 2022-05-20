@@ -3,7 +3,7 @@
 # check arguments
 if [ -z $1 ]
 then
-	echo "This script require a valid c3app name ex '${0} wordpress'"
+	echo "This script require a valid package name ex '${0} wordpress'"
 	exit 1
 fi
 # check if package dir exists
@@ -40,11 +40,20 @@ PACKAGE_MD5_FILENAME=${PACKAGE_BASE_FILENAME}.md5
 # common files
 for filename in ${COMMON_PATH}/*.*; do
   basename="$(basename -- ${filename})"
-  printf "#!/bin/bash\\n\\n"> "${PACKAGE_NAME}/${basename}"
-  printf "####################################################################################################################################\\n" >> "${PACKAGE_NAME}/${basename}"
-  printf "# DON'T EDIT THIS FILE, it will be replaced with @common file on bundleApp.sh                                                      #\\n" >> "${PACKAGE_NAME}/${basename}"
-  printf "####################################################################################################################################\\n\\n" >> "${PACKAGE_NAME}/${basename}"
-  cat ${filename} >> "${PACKAGE_NAME}/${basename}"
+  if [ "${basename}" == "${SCRIPT_POST_INSTALL_FILE_NAME}" ]; then
+    if [ ! -f "${PACKAGE_NAME}/${basename}" ]; then
+      # copy custom user files only if file doesn't exists already
+      printf "#!/bin/bash\\n\\n"> "${PACKAGE_NAME}/${basename}"
+      cat "${filename}" >> "${PACKAGE_NAME}/${basename}"
+    fi
+  else
+    # always copy/update/overrite file if not custom user file
+    printf "#!/bin/bash\\n\\n"> "${PACKAGE_NAME}/${basename}"
+    printf "####################################################################################################################################\\n" >> "${PACKAGE_NAME}/${basename}"
+    printf "# DON'T EDIT THIS FILE, it will be replaced with @common file on bundleApp.sh                                                      #\\n" >> "${PACKAGE_NAME}/${basename}"
+    printf "####################################################################################################################################\\n\\n" >> "${PACKAGE_NAME}/${basename}"
+    cat "${filename}" >> "${PACKAGE_NAME}/${basename}"
+  fi
 done
 # don't forget to change permissions, else we get `-bash: ./install.sh: Permission denied` on c3-cloud-client
 find . -name '*.sh' -exec chmod a+x {} +

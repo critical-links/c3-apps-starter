@@ -4,7 +4,7 @@
 # use example: 'sudo ./syncthingUninstall.sh 3456afe'
 
 export C3_PACKAGE_BASE_DATA_PATH="/var/lib/c3apps"
-export C3_PACKAGE_BASE_BUNDLE_PATH="/data/syncthing/data"
+export C3_PACKAGE_BASE_BUNDLE_PATH="/home/syncthing/data"
 
 # check arguments
 if [ -z $1 ]
@@ -30,4 +30,8 @@ fi
 # call package uninstall script
 PWD=$(pwd)
 cd ${C3_PACKAGE_DATA_PATH}
-./uninstall.sh ${SYNCTHING_APP_DIR}
+if [ -f "uninstall.sh" ]; then
+  ./uninstall.sh ${SYNCTHING_APP_DIR}
+else
+  echo "seems that c3app was already uninstalled, miss file uninstall.sh in package path ${C3_PACKAGE_DATA_PATH}"
+fi

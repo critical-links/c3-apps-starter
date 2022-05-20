@@ -19,7 +19,7 @@ do
 	fi	
 done
 
-printf "  unpack package files to file system...\\n"
+printf "  unpack package files to filesystem...\\n"
 # extract dir files/ package root directories ex etc, srv etc
 for dir in "${C3_PACKAGE_EXTRACT_DIRS[@]}"
 do
@@ -40,6 +40,13 @@ fi
 
 # auto launch enable script on install
 ./enable.sh ${SYNCTHING_APP_DIR}
+
+# local install, only occurs if we create a custom post install script
+POST_INSTALL="install_post.sh"
+if [ -f "${POST_INSTALL}" ]; then
+	echo "running post install script ${POST_INSTALL}"
+	./${POST_INSTALL}
+fi
 
 # return home
 cd ${PWD}

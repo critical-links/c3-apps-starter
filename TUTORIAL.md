@@ -259,7 +259,6 @@ some variables that we can tweak in `pushToC3.sh`
 # user variables
 C3_ADDRESS="c3@c3edu.online"
 C3_PASS="root"
-SYNCTHING_APP_DIR="008280"
 ```
 
 > Note: `SYNCTHING_APP_DIR` is just a fake syncthing folderId, in this case we use port number prefixed with `00`
@@ -270,7 +269,7 @@ after we check ssh connection, we can deploy c3app on our c3
 
 ```shell
 # bundle and deploy c3app on c3
-$ ./pushToC3.sh wordpress-tutorial 1.0.0
+$ ./pushToC3.sh wordpress-tutorial 1.0.0 0008280
 
 done, now to install and uninstall c3app, launch bellow scripts in path /tmp/c3apps
 
@@ -281,10 +280,10 @@ done, now to install and uninstall c3app, launch bellow scripts in path /tmp/c3a
   cd /tmp/c3apps
 
   # 3. install c3app
-  sudo ./syncthingInstall.sh wordpress-tutorial 008280
+  sudo ./syncthingInstall.sh wordpress-tutorial 0008280
 
   # 4. uninstall app
-  sudo ./syncthingUninstall.sh 008280
+  sudo ./syncthingUninstall.sh 0008280
 ```
 
 ### Configure Hosts File
@@ -341,10 +340,10 @@ we will follow suggested lines from `./pushToC3.sh wordpress-tutorial 1.0.0` out
   cd /tmp/c3apps
 
   # 3. install c3app
-  sudo ./syncthingInstall.sh wordpress-tutorial 008280
+  sudo ./syncthingInstall.sh wordpress-tutorial 0008280
 
   # 4. uninstall c3app
-  sudo ./syncthingUninstall.sh 008280
+  sudo ./syncthingUninstall.sh 0008280
 ```
 
 first we must connect to c3 device
@@ -359,16 +358,16 @@ $ ssh c3@c3edu.online
 # enter temp path
 $ cd /tmp/c3apps
 # install c3app
-$ sudo ./syncthingInstall.sh wordpress-tutorial 008280
+$ sudo ./syncthingInstall.sh wordpress-tutorial 0008280
 # outcome
-  extracting VERSION from /data/syncthing/data/008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/008280
-  extracting enable.sh from /data/syncthing/data/008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/008280
-  extracting disable.sh from /data/syncthing/data/008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/008280
-  extracting install.sh from /data/syncthing/data/008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/008280
-  extracting uninstall.sh from /data/syncthing/data/008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/008280
-  extracting app.env from /data/syncthing/data/008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/008280
-  extracting common.env from /data/syncthing/data/008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/008280
-  extracting data.json from /data/syncthing/data/008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/008280
+  extracting VERSION from /data/syncthing/data/0008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/0008280
+  extracting enable.sh from /data/syncthing/data/0008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/0008280
+  extracting disable.sh from /data/syncthing/data/0008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/0008280
+  extracting install.sh from /data/syncthing/data/0008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/0008280
+  extracting uninstall.sh from /data/syncthing/data/0008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/0008280
+  extracting app.env from /data/syncthing/data/0008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/0008280
+  extracting common.env from /data/syncthing/data/0008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/0008280
+  extracting data.json from /data/syncthing/data/0008280/wordpress-tutorial_1.0.0.c3app to /var/lib/c3apps/0008280
 install wordpress-tutorial...
 check if target directories exist...
   unpack package files to file system...
@@ -436,7 +435,7 @@ we see that we are redirect to https and have our c3app working
 ## Part III - App Files Location
 
 - bundled c3app, in production syncthing will bring that file to this location
-  - `/data/syncthing/data/008280/wordpress-tutorial_1.0.0.c3app`
+  - `/data/syncthing/data/0008280/wordpress-tutorial_1.0.0.c3app`
 
 - apache sites configuration
   - `/etc/apache2/sites-available/c3app-wordpress-tutorial.com-le-ssl.conf`
@@ -446,14 +445,14 @@ we see that we are redirect to https and have our c3app working
   - `/etc/monit/conf-available/host-c3app-wordpress-tutorial`
 
 - c3app bundle extracted file
-  - `/var/lib/c3apps/008280/app.env`
-  - `/var/lib/c3apps/008280/common.env`
-  - `/var/lib/c3apps/008280/data.json`
-  - `/var/lib/c3apps/008280/disable.sh`
-  - `/var/lib/c3apps/008280/enable.sh`
-  - `/var/lib/c3apps/008280/install.sh`
-  - `/var/lib/c3apps/008280/uninstall.sh`
-  - `/var/lib/c3apps/008280/VERSION`
+  - `/var/lib/c3apps/0008280/app.env`
+  - `/var/lib/c3apps/0008280/common.env`
+  - `/var/lib/c3apps/0008280/data.json`
+  - `/var/lib/c3apps/0008280/disable.sh`
+  - `/var/lib/c3apps/0008280/enable.sh`
+  - `/var/lib/c3apps/0008280/install.sh`
+  - `/var/lib/c3apps/0008280/uninstall.sh`
+  - `/var/lib/c3apps/0008280/VERSION`
 
 - docker files
   - `docker-compose.yml`
@@ -481,7 +480,7 @@ now procceed to uninstall c3app
 # enter temp path
 $ cd /tmp/c3apps
 # uninstall.sh app, this time we will pass only syncthing folderId
-$ sudo ./syncthingUninstall.sh 008280
+$ sudo ./syncthingUninstall.sh 0008280
 # outcome
 uninstall wordpress-tutorial...
   remove docker network c3app-wordpress-tutorial-network
@@ -509,7 +508,7 @@ Removing image wordpress
     removing file /etc/apache2/sites-available/c3app-wordpress-tutorial.com-le-ssl.conf...
     removing file /etc/monit/conf-available/host-c3app-wordpress-tutorial...
     removing directory /srv/docker/thirdparty/wordpress-tutorial/...
-    removing directory /var/lib/c3apps/008280..
+    removing directory /var/lib/c3apps/0008280..
 ```
 
 ### In Development Machine

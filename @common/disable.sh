@@ -17,8 +17,12 @@ echo $(cat ${C3_PACKAGE_DATA_FILEPATH} | jq ".state = \"${SERVICE_STATE_DISABLIN
 
 printf "  disable apache reverse proxy ${APP_DOMAIN}.${C3_DOMAIN}...\\n"
 cd ${C3_APACHE_SITES_ENABLED}
-${APACHE_DISABLE_HTTP}
-${APACHE_DISABLE_HTTPS}
+if [ ! -L "c3app-${APP_NAME}.conf" ]; then
+  ${APACHE_DISABLE_HTTP}
+fi
+if [ ! -L "c3app-${APP_NAME}.com-le-ssl.conf" ]; then
+  ${APACHE_DISABLE_HTTPS}
+fi
 ${APACHE_RELOAD_SERVICE}
 sleep ${SLEEP_TIME}
 

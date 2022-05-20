@@ -47,7 +47,7 @@ export C3_PACKAGE_REMOVE_FILES=(
   "${C3_PACKAGE_BASE_DATA_PATH}/${SYNCTHING_APP_DIR}"
 )
 
-echo "  removing files and directories..."
+echo "  removing files, directories and symbolic links..."
 for fileOrDir in "${C3_PACKAGE_REMOVE_FILES[@]}"
 do
   # check if dir
@@ -57,7 +57,15 @@ do
   fi
   # check if file exists
   if test -f "${fileOrDir}"; then
-    echo "    removing file ${fileOrDir}..."
     rm ${fileOrDir}
+  fi
+  # check if is a symbolic link
+  if [[ -L "${fileOrDir}" ]]; then
+    echo "    removing symbolic link ${fileOrDir}..."
+    if [[ -e "${fileOrDir}" ]]; then
+      unlink ${fileOrDir}
+    else
+      unlink ${fileOrDir}
+    fi
   fi
 done

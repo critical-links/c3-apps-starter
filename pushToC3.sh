@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # check arguments
-if [ -z $1 ] || [ -z $2 ]
+if [ -z $1 ] || [ -z $2 ] || [ -z $3 ]
 then
-	echo "This script require a valid c3app name and version ex '${0} wordpress 1.0.0'"
+	echo "This script require a valid c3app name, version and syncthing folderId ex '${0} wordpress 1.0.0 0008100'"
 	exit 1
 fi
 # check if package dir exists
@@ -18,7 +18,7 @@ fi
 # user variables
 C3_ADDRESS="c3@c3edu.online"
 C3_PASS="root"
-SYNCTHING_APP_DIR="008280"
+SYNCTHING_APP_DIR="${3}"
 # script variables
 APP_NAME="${1}"
 APP_VERSION="${2}"
@@ -31,7 +31,7 @@ SYNCTHING_INSTALL_SCRIPT="syncthingInstall.sh"
 SYNCTHING_UNINSTALL_SCRIPT="syncthingUninstall.sh"
 SCP_FLAGS="-q -o LogLevel=QUIET"
 
-# bundle app
+# always bundle, re-bundle app
 ./bundleApp.sh ${APP_NAME}
 
 # mkdir and change onwner
