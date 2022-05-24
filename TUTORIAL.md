@@ -25,7 +25,7 @@
 
 ## Enter Repo Path
 
-after cloned repo <https://github.com/critical-links/c3-apps-starter.git> in [README](README.md), we must enter cloned folder path and start form here
+Start by cloning the repo <https://github.com/critical-links/c3-apps-starter.git> as indicated in [README](README.md). After the process is completed, go to the c3-apps-starter folder
 
 ```shell
 # enter path
@@ -36,7 +36,7 @@ $ cd ~/c3-apps-starter
 
 ### Bootstrap boilerplate files
 
-first we need to run `./bootstrapNewApp.sh` script to bootstrap boilerplate files to work with
+Start by running the `./bootstrapNewApp.sh` script to bootstrap boilerplate files. They will be the working base to create a new C3 App.
 
 ```shell
 # bootstrap c3app
@@ -45,11 +45,11 @@ $ ./bootstrapNewApp.sh wordpress-tutorial 8280
 
 > Note: `wordpress-tutorial/` was previously added to `.gitignore`, with that git will not track `wordpress-tutorial` changes
 
-> Note: argument `8280` will be our http exposed port
+> Note: argument `8280` will be our http exposed port. We will use a reverse proxy to then point a subdomain to this exposed port
 
 ### Inspect boilerplate files
 
-after use `./bootstrapNewApp.sh` script we can check that we have bellow file system structure created
+After using the `./bootstrapNewApp.sh` script we can check the file system structure that was created by the script
 
 ```shell
 wordpress-tutorial/                                          c3app root folder
@@ -81,7 +81,7 @@ open `wordpress-tutorial/srv/docker/thirdparty/wordpress-tutorial/docker-compose
 $ nano wordpress-tutorial/srv/docker/thirdparty/wordpress-tutorial/docker-compose.yml
 ```
 
-and replace it's contents with
+and replace its contents with
 
 `wordpress-tutorial/srv/docker/thirdparty/wordpress-tutorial/docker-compose.yml`
 
@@ -133,7 +133,7 @@ networks:
     external: true
 ```
 
-we opted to exposed http port in environment variables **in an external file** `.env`, this file was created on bootstrap c3app generation, if one want to change exposed port this is the right place to do that, just change `8280` for desired port ex `8080`
+We opted to expose the http port in environment variables **in an external file** `.env`. This file was created during the bootstrap c3app generation. If one wants to change the exposed port this is the right place to do it, just change `8280` for the desired port, ex `8080`.
 
 `wordpress/srv/docker/thirdparty/wordpress-tutorial/.env`
 
@@ -158,7 +158,7 @@ $ docker network ls | grep c3app-wordpress-tutorial-network
 # enter path
 $ cd wordpress-tutorial/srv/docker/thirdparty/wordpress-tutorial
 
-# optional: if previously spin the stack, is better to do some tear down/clean up work first to prevent stalled files and docker stuff
+# optional: if you have previously put up the stack, is better to do some tear down/clean up work first to prevent stalled files and docker stuff
 $ docker-compose down --remove-orphans | true  && sudo rm volumes/ -R | true
 
 # spin docker compose stack
@@ -195,22 +195,22 @@ $ docker-compose logs -f
 
 ### Test local c3App
 
-open browser and connect to [http://localhost:8280](http://localhost:8280), if everything works has expected we are redirected to wordpress admin install page
+Open your browser and connect to [http://localhost:8280](http://localhost:8280), if everything works as expected we are redirected to wordpress admin install page
 
 ![image](attachments/2022-05-16-15-39-58.png)
 
 here we follow the install configuration steps as usual
 
-after we finish install, we have a proper wordpress installation, connected to a mysql datastore
+after we finish the installation process, we have a proper wordpress installation connected to a mysql datastore
 
 ![image](attachments/2022-05-16-15-45-07.png)
 
 ### Clean up
 
-before next steps, **Bundle and Deploy App**, we need to do some clean up, to prevent errors
+Before performing the next steps, **Bundle and Deploy App**, we need to do some clean up, to prevent errors
 
 ```shell
-# enter path if not already in
+# enter path if not already in there
 $ cd wordpress-tutorial/srv/docker/thirdparty/wordpress-tutorial
 $ docker-compose down --remove-orphans | true  && sudo rm volumes/ -R | true
 ```
@@ -219,9 +219,9 @@ $ docker-compose down --remove-orphans | true  && sudo rm volumes/ -R | true
 
 ### Bundle App
 
-before push our bundle c3app to c3 device we must bundle it in a standalone file `.c3app`
+Before pushing our bundle c3app to a C3 Micro-Cloud device we must bundle it in a standalone file `.c3app`
 
-in `c3-apps-starter` repo root path launch `./bundleApp.sh` script, to bundle c3App in a standalone c3app passing the c3app id ex `wordpress-tutorial`
+In `c3-apps-starter` repo root path launch the `./bundleApp.sh` script. To bundle c3App in a standalone c3app you need to provice the c3 app id as an argument, ex `wordpress-tutorial`
 
 ```shell
 # bundle c3app
@@ -234,17 +234,17 @@ $ ls -la @deploy-versions/wordpress-tutorial/
 -rw-r--r-- 1 mario users 5666 May 16 17:08 wordpress-tutorial_1.0.0.c3app
 ```
 
-done we have a bundle with our c3 c3app `wordpress-tutorial_1.0.0.c3app`
+Now we have a bundle with our c3 c3app `wordpress-tutorial_1.0.0.c3app`
 
-### Deploy App on a C3 device
+### Deploy App on a C3 Micro-Cloud device
 
-to deploy/simulate a c3cloudcontrol/syncthing installation one can use `pushToC3.sh` script to push c3app on a c3 device
+To deploy/simulate a c3cloudcontrol/syncthing installation one can use `pushToC3.sh` script to push c3app to a C3 Micro-Cloud device
 
-first we need to know the ip address of our c3, or use it's domain for ex `c3edu.online`,
-in our case we use domain name `c3edu.online`
-if our c3 **only responds to a specific ip** we must tweak `pushToC3.sh` script to change its default `C3_ADDRESS` ex `C3_ADDRESS="c3@192.168.1.120"` in the case our c3 ip address is `192.168.1.120`
+First we need to know the ip address of the C3 Micro-Cloud device, or use its domain (ex `c3edu.online`).
+In our case we use domain name `c3edu.online` (this is the one that you will most probably also use)
+If your C3 Micro-Cloud **only responds to a specific ip** we must tweak `pushToC3.sh` script to change its default `C3_ADDRESS` ex `C3_ADDRESS="c3@192.168.1.120"` in the case your C3 Micro-Cloud IP address is `192.168.1.120`
 
-we can test communication with a simple ssh connection
+We can test communication with a simple ssh connection
 
 ```shell
 # test ssh connection
@@ -265,13 +265,13 @@ C3_PASS="root"
 
 after we check ssh connection, we can deploy c3app on our c3
 
-> Tip: we must use our c3app name id and version in script arguments, we can get it from bundle filename ex `wordpress-tutorial_1.0.0.c3app`
+> Tip: we must use the c3app name id and version in the script arguments. Those values can be obtained from the bundle filename ex `wordpress-tutorial_1.0.0.c3app`
 
 ```shell
-# bundle and deploy c3app on c3
+# bundle and deploy c3app on C3 Micro-Cloud
 $ ./pushToC3.sh wordpress-tutorial 1.0.0 0008280
 
-done, now to install and uninstall c3app, launch bellow scripts in path /tmp/c3apps
+Done. Now to install and uninstall c3app, launch bellow scripts in the path /tmp/c3apps
 
   # 1. connect to c3 via ssh
   ssh c3@c3edu.online
@@ -288,10 +288,10 @@ done, now to install and uninstall c3app, launch bellow scripts in path /tmp/c3a
 
 ### Configure Hosts File
 
-before start execute the suggested commands, we need to `hack` our hosts file to simulate c3app dns domain `wordpress-tutorial.c3edu.online`
-what this means is that c3app work with reverse proxy and samba dns cnames, if we are connected to a c3 network we can access the c3app just using that domain in browser for ex `https://wordpress-tutorial.c3edu.online` and it simply works, but in our current development environment we are connected to a non c3 network, and to test reverse proxy we must edit our `/etc/hosts` file in our workstation/laptop (machine where we use the browser)
+Before executing the suggested commands, we need to `hack` our hosts file to simulate c3app dns domain `wordpress-tutorial.c3edu.online`.
+This is necessary because the c3app works with reverse proxy and samba dns cnames, if we are connected to a c3 network we can access the c3app just using that domain in browser for ex `https://wordpress-tutorial.c3edu.online` and it simply works, but in our current development environment we are connected to a non c3 network, and to test the reverse proxy we must edit our `/etc/hosts` file in our workstation/laptop (machine where we use the browser). This last step is only needed if you are connected to the C3 Micro-Cloud using the WAN interface.
 
-in our case our c3 have the ip `192.168.1.120` we can get it's ip with
+In our case our C3 Micro-Cloud has the ip `192.168.1.120`.
 
 ```shell
 # get ip address
@@ -301,9 +301,9 @@ $ ssh -t c3@c3edu.online "ip addr show eth0" | grep inet
     inet 192.168.1.120/24 brd 192.168.1.255 scope global dynamic eth0
 ```
 
-> Note: we can see the ip address `inet 192.168.1.120/24` on outcome
+> Note: we can see the ip address `inet 192.168.1.120/24` 
 
-now add domain to hosts file
+Now add domain to hosts file
 
 ```shell
 # edit hosts file
@@ -326,11 +326,11 @@ $ ping wordpress-tutorial.c3edu.online
 64 bytes from c3edu.online (192.168.1.120): icmp_seq=2 ttl=64 time=0.259 ms
 ```
 
-if domain responds successfully we can start to install and test c3app
+If domain responds successfully we can start to install and test c3app
 
 ### Install and Run c3App
 
-we will follow suggested lines from `./pushToC3.sh wordpress-tutorial 1.0.0` outcome script
+Follow the suggested instructions from `./pushToC3.sh wordpress-tutorial 1.0.0` outcome script
 
 ```shell
   # 1. connect to c3 via ssh
@@ -426,7 +426,7 @@ There is no service named "c3app-wordpress-tutorial"
   save service state
 ```
 
-go to browser and navigate to <wordpress-tutorial.c3edu.online>
+go to the browser and navigate to <wordpress-tutorial.c3edu.online>
 
 ![image](attachments/2022-05-16-18-25-35.png)
 
@@ -463,7 +463,7 @@ we see that we are redirect to https and have our c3app working
 
 ### In C3 Device
 
-to revert c3app installation, we use the `./syncthingUninstall.sh` script, this will remove all files, docker images, volumes and networks
+To revert the c3app installation, we use the `./syncthingUninstall.sh` script. This will remove all files, docker images, volumes and networks
 
 first we must connect to c3 device, if not already connected
 
@@ -530,4 +530,4 @@ $ rm wordpress-tutorial -R
 
 ## Final Notes
 
-done! we have create a simple c3app, deploy, install and uninstall it.
+Done! we have created a simple c3app, deployed, installed and uninstalled it.
