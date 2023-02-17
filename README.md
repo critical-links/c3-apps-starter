@@ -25,6 +25,8 @@ now the target path of c3apps will be:
 - c3legacy 4.x version > `/srv/docker/thirdparty/${APP_NAME}`
 - c3next 5.x version > `/data/docker/thirdparty/${APP_NAME}`
 
+> NOTE: only change the `basePath` from `/srv` to `/data`
+
 ### Migrate old apps to new ones
 
 1. move `${APP_NAME}/srv/docker` to `${APP_NAME}/docker` (one level down)
