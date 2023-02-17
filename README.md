@@ -2,6 +2,7 @@
 
 - [README](#readme)
   - [UPDATE 2023-02-17 12:36:17](#update-2023-02-17-123617)
+    - [Migrate old apps to new ones](#migrate-old-apps-to-new-ones)
   - [Assumptions](#assumptions)
   - [Tutorial](#tutorial)
     - [Boostrap boilerplate c3App](#boostrap-boilerplate-c3app)
@@ -15,15 +16,21 @@ this is useful to bootstrap a `docker-compose.yml` file with two connected compo
 
 ## UPDATE 2023-02-17 12:36:17
 
-**apps scripts and structure as changed**, now we don't use `/srv` as basePath, ex `/srv/docker/thirdparty/${APP_NAME}`
-this was changes to support new c3next 5.x second disk as `/data`, and to keep support c3legacy 4.x versions
+**apps scripts and structure have changed**, now we don't use `/srv` as basePath,
+ex `/srv/docker/thirdparty/${APP_NAME}`
+this changes were required to support new **c3next 5.x second disk** as `/data`, and to keep support **c3legacy 4.x** versions
 
-now the paths will be
+now the target path of c3apps will be:
 
 - c3legacy 4.x version > `/srv/docker/thirdparty/${APP_NAME}`
 - c3next 5.x version > `/data/docker/thirdparty/${APP_NAME}`
 
-to migrate old apps to new ones just move `${APP_NAME}/srv/docker` to `${APP_NAME}/docker`, and delete the empty `${APP_NAME}/srv/docker/srv`
+### Migrate old apps to new ones
+
+1. move `${APP_NAME}/srv/docker` to `${APP_NAME}/docker` (one level down)
+2. delete the empty `${APP_NAME}/srv/docker/srv`
+3. and rebundle the app with `bundleApp.sh` script
+4. deploy the app and test it
 
 ## Assumptions
 
