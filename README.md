@@ -1,16 +1,29 @@
 # README
 
 - [README](#readme)
+  - [UPDATE 2023-02-17 12:36:17](#update-2023-02-17-123617)
   - [Assumptions](#assumptions)
   - [Tutorial](#tutorial)
     - [Boostrap boilerplate c3App](#boostrap-boilerplate-c3app)
       - [Checkout Project](#checkout-project)
       - [Follow Tutorial](#follow-tutorial)
 
-this repo is a simple template to generate **critical-links c3Apps**, with some instructions and a tutorial of how to create a new c3App, 
+this repo is a simple template to generate **critical-links c3Apps**, with some instructions and a tutorial of how to create a new c3App,
 
 in this pratical use case, we will use `wordpress` docker image with `mysql`,
 this is useful to bootstrap a `docker-compose.yml` file with two connected component services in this case `wordpress` and `mysql`
+
+## UPDATE 2023-02-17 12:36:17
+
+**apps scripts and structure as changed**, now we don't use `/srv` as basePath, ex `/srv/docker/thirdparty/${APP_NAME}`
+this was changes to support new c3next 5.x second disk as `/data`, and to keep support c3legacy 4.x versions
+
+now the paths will be
+
+- c3legacy 4.x version > `/srv/docker/thirdparty/${APP_NAME}`
+- c3next 5.x version > `/data/docker/thirdparty/${APP_NAME}`
+
+to migrate old apps to new ones just move `${APP_NAME}/srv/docker` to `${APP_NAME}/docker`, and delete the empty `${APP_NAME}/srv/docker/srv`
 
 ## Assumptions
 
@@ -32,7 +45,8 @@ enter a working path ex `~`
 ```shell
 # enter home path
 $ cd ~
-$ https://github.com/critical-links/c3-apps-starter.git
+$ git clone https://github.com/critical-links/c3-apps-starter.git
+$ cd c3-apps-starter
 ```
 
 #### Follow Tutorial

@@ -27,18 +27,19 @@ RENAME_FILENAMES=(
   ${APP_NAME}/etc/apache2/sites-available/c3app-${FIND_APP_NAME}.com-le-ssl.conf 
   ${APP_NAME}/etc/apache2/sites-available/c3app-${FIND_APP_NAME}.conf 
   ${APP_NAME}/etc/monit/conf-available/host-c3app-${FIND_APP_NAME} 
-  ${APP_NAME}/srv/docker/thirdparty/${FIND_APP_NAME}
+  ${APP_NAME}/docker/thirdparty/${FIND_APP_NAME}
 )
 REPLACE_FILENAMES=(
   ${APP_NAME}/etc/apache2/sites-available/c3app-${APP_NAME}.com-le-ssl.conf
   ${APP_NAME}/etc/apache2/sites-available/c3app-${APP_NAME}.com-le-ssl.conf
   ${APP_NAME}/etc/apache2/sites-available/c3app-${APP_NAME}.conf
   ${APP_NAME}/etc/monit/conf-available/host-c3app-${APP_NAME}
-  ${APP_NAME}/srv/docker/thirdparty/${APP_NAME}/docker-compose.yml
-  ${APP_NAME}/srv/docker/thirdparty/${APP_NAME}/.env
+  ${APP_NAME}/docker/thirdparty/${APP_NAME}/docker-compose.yml
+  ${APP_NAME}/docker/thirdparty/${APP_NAME}/.env
   ${APP_NAME}/app.env
   ${APP_NAME}/bundle.env
   ${APP_NAME}/etc/monit/conf-available/host-c3app-${APP_NAME}
+  ${APP_NAME}/.dockerignore
 )
 # copy template
 printf "creating app structure...\n";
@@ -66,5 +67,5 @@ done
 
 printf "done\n\n";
 printf "after bootstrap new app directory structure with ${0} we must change some files that can't be automatically changed/generated\n\n"
-printf "> ${APP_NAME}/srv/docker/thirdparty/${APP_NAME}/docker-compose.yml\n"
+printf "> ${APP_NAME}/docker/thirdparty/${APP_NAME}/docker-compose.yml\n"
 printf "> ${APP_NAME}/etc/apache2/sites-available/c3app-${APP_NAME}.com-le-ssl.conf (optional)\n\n"
