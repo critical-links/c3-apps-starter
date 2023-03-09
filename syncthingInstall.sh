@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # this scrips must run in c3, that's the reason to have redeclared used variables here
-# use example: 'sudo ./syncthingInstall.sh moodle 3456afe'
+# use example: './pushToC3.sh moodle 1.0.2 3456afe && sudo ./syncthingInstall.sh moodle 3456afe'
 
 export C3_PACKAGE_BASE_DATA_PATH="/var/lib/c3apps"
 export C3_PACKAGE_BASE_BUNDLE_PATH="/home/syncthing/data"
 export PACKAGE_BASE_FILENAME_EXTENSION="c3app"
 # this must match common.env
-export C3_PACKAGE_EXTRACT_FILES=( "VERSION" "enable.sh" "disable.sh" "install.sh" "uninstall.sh" "install_post.sh" "app.env" "common.env" "data.json")
+export C3_PACKAGE_EXTRACT_FILES=( "VERSION" "enable.sh" "disable.sh" "install.sh" "uninstall.sh" "install_pre.sh" "install_post.sh" "uninstall_pre.sh" "uninstall_post.sh" "app.env" "common.env" "data.json")
 
 # check arguments
 if [ -z $1 ] || [ -z $2 ]
