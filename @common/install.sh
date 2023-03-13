@@ -20,10 +20,9 @@ fi
 printf "check if target directories exist...\\n"
 for dir in "${C3_PACKAGE_EXTRACT_TARGET_DIRS[@]}"
 do
-	if [ ! -d ${dir} ] 
-	then
+	if [ ! -d ${dir} ];	then
 		mkdir ${dir} -p
-	fi	
+	fi
 done
 
 printf "  unpack package files to filesystem...\\n"

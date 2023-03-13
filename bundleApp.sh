@@ -99,7 +99,7 @@ cat > "${PACKAGE_BUNDLE_PROPS_FILENAME}" <<- EOM
   "appName": "${PACKAGE_NAME}",
   "domain": "${PACKAGE_NAME}.${C3_DOMAIN}",
   "version": "${PACKAGE_VERSION}",
-  "instructions": "${APP_INSTRUCTIONS}",  
+  "instructions": "${APP_INSTRUCTIONS}",
   "state": "${SERVICE_STATE_INSTALLING}",
   "bundleFilename": "${PACKAGE_BUNDLE_FILENAME}",
   "extractFiles": [${PACKAGE_EXTRACT_FILES}],

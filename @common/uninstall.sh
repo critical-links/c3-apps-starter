@@ -7,10 +7,12 @@ validate_root_user
 
 printf "uninstall ${APP_FRIENDLY_NAME}...\\n"
 
-# remove docker network before disable
-printf "  remove docker network ${DOCKER_NETWORK}\n"
-${DOCKER_REMOVE_NETWORK}
-sleep ${SLEEP_TIME}
+# local install, only occurs if we create a custom pre uninstall script
+PRE_UNINSTALL="uninstall_pre.sh"
+if [ -f "${PRE_UNINSTALL}" ]; then
+	echo "running PRE uninstall script ${PRE_UNINSTALL}"
+	./${PRE_UNINSTALL} ${SYNCTHING_APP_DIR}
+fi
 
 # disable app
 printf "  disable app\n"
@@ -24,6 +26,11 @@ fi
 printf "  stop docker stack\\n"
 cd ${C3_DOCKER_BASE_PATH}/${APP_NAME}
 ${DOCKER_TEAR_DOWN}
+sleep ${SLEEP_TIME}
+
+# always remove docker network before disable
+printf "  remove docker network ${DOCKER_NETWORK}\n    "
+${DOCKER_REMOVE_NETWORK}
 sleep ${SLEEP_TIME}
 
 # this is not needed anymore, docker down already clean's up
@@ -46,6 +53,14 @@ export C3_PACKAGE_REMOVE_FILES=(
   "${C3_DOCKER_BASE_PATH}/${APP_NAME}/"
   "${C3_PACKAGE_BASE_DATA_PATH}/${SYNCTHING_APP_DIR}"
 )
+
+# local install, only occurs if we create a custom post uninstall script
+# warn: must be here, before removing files, dirs, symlinks stuff, else uninstall_post.sh is deleted when reach this point
+POST_UNINSTALL="uninstall_post.sh"
+if [ -f "${POST_UNINSTALL}" ]; then
+	echo "running post uninstall script ${POST_UNINSTALL}"
+	./${POST_UNINSTALL} ${SYNCTHING_APP_DIR}
+fi
 
 echo "  removing files, directories and symbolic links..."
 for fileOrDir in "${C3_PACKAGE_REMOVE_FILES[@]}"

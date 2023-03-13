@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[[ EUID -ne 0 ]] && echo "This script must be run as root." && exit 1
+
 # check arguments
 if [ -z $1 ] || [ -z $2 ] || [ -z $3 ]
 then
@@ -35,6 +37,15 @@ SCP_FLAGS="-q -o LogLevel=QUIET"
 # always bundle, re-bundle app
 ./bundleApp.sh ${APP_NAME}
 
+# check if app version exists
+if [ ! -f "${APP_FILEPATH}" ]; then
+  echo "can't find app in file path '${APP_FILEPATH}', please check file path"
+  exit 1
+fi
+
+# always delete TEMP_PATH to prevent /tmp/c3apps file
+CMD="[ -d "${TEMP_PATH}" ]; rm -r ${TEMP_PATH}"
+${C3_BASE_CMD} 'echo '${C3_PASS}' | sudo -S -s /bin/bash -c "'${CMD}'"'
 # mkdir and change onwner
 CMD="mkdir '${TEMP_PATH}' -p; chown c3.c3 '${TEMP_PATH}'"
 ${C3_BASE_CMD} 'echo '${C3_PASS}' | sudo -S -s /bin/bash -c "'${CMD}'"'
